@@ -1,0 +1,137 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+
+<body>
+
+<div class="container-fluid">
+<div class="row">
+<div class="jumbotron"> 
+	<center>
+		<h3>Assignment-2</h3>
+	</center>
+</div>
+</div>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+	<h4>Elements in Array :</h4>
+	<table class="table table-striped" id="default"></table>
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4">
+<div class="thumbnail">
+
+<legend>
+		<button class="btn btn-success btn-block btn-disabled" disabled="true">
+			<h4>Element Input</h4>
+		</button>
+</legend>
+
+<input type="text" class="form-control" name="element" id="element" onkeypress="insert()" ><br/>
+
+
+</div>
+</div>
+<div class="col-md-4">
+<div class="thumbnail">
+
+<legend>
+		<button class="btn btn-primary btn-block btn-disabled" disabled="true">
+			<h4><span class="badge" id="newcount"></span> New Additions</h4>
+		</button>
+</legend>
+<table class="table table-striped" id="final"></table>
+</div>
+</div>
+<div class="col-md-4">
+<div class="thumbnail">
+
+<legend>
+		<button class="btn btn-danger btn-block btn-disabled" disabled="true">
+			<h4><span class="badge" id="repeatedCount"></span>Repeated quantites</h4>
+		</button>
+</legend>
+<table class="table table-striped" id="repeat"></table>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script>
+
+
+function insert () {
+var array=[7000,7001,7002,7003,7004,7005];
+var tempArray=[];
+var tempArray1=[];
+var temp=[];
+var tempRep=[];
+var t0="";
+var t1="";
+var t2="";
+var checkInp = $("#element").val();
+var length=array.length;
+tempArray=checkInp.split(',');
+t0 = t0+'<tr>';
+for (var i = 0; i < array.length; i++) {
+t0 = t0+'<td><center>'+array[i]+'</td>';
+};
+t0 = t0+'</tr>';
+document.getElementById('default').innerHTML=t0;
+ 
+for (var i = 0; i < tempArray.length; i++) {
+if(isNaN(tempArray[i]))
+{
+	temp=tempArray[i].split('-');
+	for (var i = temp[0]; i <= temp[1]; i++) {
+		tempArray1.push(i);
+	};
+}	
+else
+{
+	tempArray1.push(tempArray[i]);
+};
+};
+var strr=" ";
+for (var i = 0; i < array.length;i++) {
+	
+	strr=strr+" "+array[i];
+};
+
+for (var i = 0; i < tempArray1.length; i++) {
+	var par=tempArray1[i];
+	var inde=strr.indexOf(par);	
+
+
+if (inde<0) {
+	array.push(par);
+};
+if (inde>0) {
+	tempRep.push(par);
+};
+};
+
+
+for (var i = 0; i < array.length; i++) {
+t1 = t1+'<tr><td><center>'+array[i]+'</center></td></tr>';
+};
+
+document.getElementById('final').innerHTML=t1;
+document.getElementById('newcount').innerHTML=array.length-length;
+
+
+for (var i = 0; i < tempRep.length; i++) {
+t2 = t2+'<tr><td><center>'+tempRep[i]+'</center></td></tr>';
+
+};
+document.getElementById('repeat').innerHTML=t2;
+document.getElementById('repeatedCount').innerHTML=tempRep.length;
+
+}
+
+</script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
