@@ -27,13 +27,6 @@
 	
 	</div>
 	</div>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-12">
-	<h4>Elements in Array :</h4>
-	<table class="table table-striped" id="default"></table>
-</div>
-</div>
 <div class="row">
 
 
@@ -89,13 +82,7 @@ var t2="";
 var checkInp = $("#element").val();
 var length=array.length;
 tempArray=checkInp.split(',');
-t0 = t0+'<tr>';
-for (var i = 0; i < array.length; i++) {
-t0 = t0+'<td><center>'+array[i]+'</td>';
-};
-t0 = t0+'</tr>';
-document.getElementById('default').innerHTML=t0;
- 
+
 for (var i = 0; i < tempArray.length; i++) {
 if(isNaN(tempArray[i]))
 {
